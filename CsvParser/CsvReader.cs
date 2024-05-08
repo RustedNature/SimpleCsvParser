@@ -9,7 +9,7 @@ namespace CsvParser
 {
     internal class CsvReader
     {
-        private string pathToFile = string.Empty;
+        private string pathToFile;
         private char delimiter;
         private string[,]? content;
         private int numberOfRows = 0;
@@ -24,8 +24,6 @@ namespace CsvParser
 
         public string PathToFile { get => pathToFile; set => pathToFile = value; }
         public char Delimiter { get => delimiter; set => delimiter = value; }
-
-        public string[,] Content { get => content!; }
         public int NumberOfRows { get => numberOfRows; set => numberOfRows = value; }
         public int NumberOfColumns { get => numberOfColumns; set => numberOfColumns = value; }
 
