@@ -83,6 +83,7 @@ namespace CsvParser
             {
                 string line = sr.ReadLine()!;
 
+              
                 foreach (string split in line.Split(Delimiter))
                 {
                     content![readingRow, readingColumn] = split.Trim();
