@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CsvParser
 {
-    internal class CsvReader
+    public class CsvReader
     {
         private string pathToFile;
         private char delimiter;
@@ -20,6 +20,7 @@ namespace CsvParser
             CheckIsCsv(pathToFile);
             PathToFile = pathToFile;
             Delimiter = delimiter;
+            ReadCsv();
         }
 
         public string PathToFile { get => pathToFile; set => pathToFile = value; }
@@ -43,7 +44,6 @@ namespace CsvParser
             SetNumberOfColumn();
             Create2DArray();
             ParseCells();
-            Console.WriteLine("fertsch");
         }
 
         private void Create2DArray()
@@ -90,6 +90,23 @@ namespace CsvParser
                 readingRow++;
                 readingColumn = 0;
             }
+        }
+
+        public List<List<string>> ToList()
+        {
+            List<List<string>> list = new List<List<string>>();
+
+            for (int i = 0; i < content!.GetLength(0); i++)
+            {
+                List<string> temp = new();
+                for (int j = 0; j < content.GetLength(1); j++)
+                {
+                    temp.Add(content[i, j]);
+                }
+                list.Add(temp);
+            }
+
+            return list;
         }
 
         public override string ToString()
